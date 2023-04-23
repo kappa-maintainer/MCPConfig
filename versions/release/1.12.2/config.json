@@ -1,7 +1,9 @@
 {
+    "java_target": 17,
     "mcinjector": {
-        "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
-        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+        "version": "de.oceanlabs.mcp:mcinjector:3.8.2:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"],
+        "repo": "https://maven.outlands.top/releases/"
     },
     "fernflower": {
         "version": "net.minecraftforge:forgeflower:1.0.342.8",
