@@ -3,9 +3,9 @@
 @@ -41,7 +41,7 @@
  
                 for(char c0 : s.toCharArray()) {
-                   if (!this.field_177666_c.containsKey(Character.valueOf(c0))) {
--                     this.field_177666_c.put(Character.valueOf(c0), (Object)null);
-+                     this.field_177666_c.put(Character.valueOf(c0), null);
+                   if (!this.field_177666_c.containsKey(c0)) {
+-                     this.field_177666_c.put(c0, (Predicate<BlockWorldState>)null);
++                     this.field_177666_c.put(c0, null);
                    }
                 }
              }

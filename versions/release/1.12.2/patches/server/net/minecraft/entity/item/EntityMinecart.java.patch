@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/item/EntityMinecart.java
 +++ b/net/minecraft/entity/item/EntityMinecart.java
-@@ -325,6 +325,7 @@
+@@ -340,6 +340,7 @@
  
     }
  

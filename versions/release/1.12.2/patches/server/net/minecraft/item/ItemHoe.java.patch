@@ -1,6 +1,6 @@
 --- a/net/minecraft/item/ItemHoe.java
 +++ b/net/minecraft/item/ItemHoe.java
-@@ -32,6 +32,7 @@
+@@ -34,6 +34,7 @@
        this.field_185072_b = p_i45343_1_.func_78000_c() + 1.0F;
     }
  

@@ -1,6 +1,6 @@
 --- a/net/minecraft/command/CommandBase.java
 +++ b/net/minecraft/command/CommandBase.java
-@@ -181,7 +181,7 @@
+@@ -180,7 +180,7 @@
        return (List<EntityPlayerMP>)(list.isEmpty() ? Lists.newArrayList(func_193512_a(p_193513_0_, (EntityPlayerMP)null, p_193513_2_)) : list);
     }
  
@@ -45,8 +45,8 @@
 +   public static String func_184891_e(MinecraftServer p_184891_0_, ICommandSender p_184891_1_, String p_184891_2_) throws EntityNotFoundException, CommandException {
        try {
           return func_184888_a(p_184891_0_, p_184891_1_, p_184891_2_).func_70005_c_();
-       } catch (PlayerNotFoundException var6) {
-@@ -272,7 +272,7 @@
+       } catch (PlayerNotFoundException playernotfoundexception) {
+@@ -270,7 +270,7 @@
        return func_147176_a(p_147178_0_, p_147178_1_, p_147178_2_, false);
     }
  
@@ -55,12 +55,3 @@
        ITextComponent itextcomponent = new TextComponentString("");
  
        for(int i = p_147176_2_; i < p_147176_1_.length; ++i) {
-@@ -432,7 +432,7 @@
-    }
- 
-    private static <T extends Comparable<T>> IBlockState func_190793_a(IBlockState p_190793_0_, IProperty<T> p_190793_1_, Comparable<?> p_190793_2_) {
--      return p_190793_0_.func_177226_a(p_190793_1_, p_190793_2_);
-+      return p_190793_0_.func_177226_a(p_190793_1_, (T)p_190793_2_);
-    }
- 
-    public static Predicate<IBlockState> func_190791_b(final Block p_190791_0_, String p_190791_1_) throws InvalidBlockStateException {

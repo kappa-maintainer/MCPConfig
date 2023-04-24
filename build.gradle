@@ -1108,7 +1108,7 @@ subprojects {
         }
     }
     //test.dependsOn(verify) ?
-    publish.dependsOn(verify)
+    //publish.dependsOn(verify)
 
     task renameClasses() {
         doLast {

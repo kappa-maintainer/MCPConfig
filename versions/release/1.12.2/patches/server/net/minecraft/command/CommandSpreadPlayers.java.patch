@@ -4,7 +4,7 @@
           if (entity instanceof EntityPlayer) {
              set.add(entity.func_96124_cp());
           } else {
--            set.add((Object)null);
+-            set.add((Team)null);
 +            set.add(null);
           }
        }
