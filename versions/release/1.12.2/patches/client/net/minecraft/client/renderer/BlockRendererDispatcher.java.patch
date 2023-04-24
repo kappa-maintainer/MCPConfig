@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/BlockRendererDispatcher.java
 +++ b/net/minecraft/client/renderer/BlockRendererDispatcher.java
-@@ -81,6 +81,7 @@
+@@ -84,6 +84,7 @@
        return this.field_175028_a.func_178125_b(p_184389_1_);
     }
  

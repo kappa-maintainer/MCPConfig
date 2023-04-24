@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/EntityRenderer.java
 +++ b/net/minecraft/client/renderer/EntityRenderer.java
-@@ -316,7 +316,7 @@
+@@ -319,7 +319,7 @@
                    flag = true;
                 }
  

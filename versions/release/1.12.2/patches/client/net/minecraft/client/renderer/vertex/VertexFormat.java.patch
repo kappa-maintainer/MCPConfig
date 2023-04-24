@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/vertex/VertexFormat.java
 +++ b/net/minecraft/client/renderer/vertex/VertexFormat.java
-@@ -41,6 +41,7 @@
+@@ -44,6 +44,7 @@
        this.field_177353_d = 0;
     }
  

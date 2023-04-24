@@ -9,16 +9,3 @@
        p_75816_1_.func_72906_B();
  
        try {
-@@ -164,11 +164,7 @@
-       try {
-          this.field_183014_e = true;
- 
--         while(true) {
--            if (this.func_75814_c()) {
--               continue;
--            }
--         }
-+         while(this.func_75814_c());
-       } finally {
-          this.field_183014_e = false;
-       }

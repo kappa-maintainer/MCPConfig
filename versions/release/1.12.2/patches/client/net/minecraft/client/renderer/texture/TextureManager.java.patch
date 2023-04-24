@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/texture/TextureManager.java
 +++ b/net/minecraft/client/renderer/texture/TextureManager.java
-@@ -48,7 +48,7 @@
+@@ -51,7 +51,7 @@
        }
     }
  
@@ -9,7 +9,7 @@
        boolean flag = true;
  
        try {
-@@ -62,12 +62,13 @@
+@@ -65,12 +65,13 @@
           this.field_110585_a.put(p_110579_1_, p_110579_2_);
           flag = false;
        } catch (Throwable throwable) {

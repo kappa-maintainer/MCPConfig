@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/shader/ShaderGroup.java
 +++ b/net/minecraft/client/shader/ShaderGroup.java
-@@ -37,7 +37,7 @@
+@@ -40,7 +40,7 @@
     private float field_148036_j;
     private float field_148037_k;
  
@@ -9,7 +9,7 @@
        this.field_148033_b = p_i1050_2_;
        this.field_148035_a = p_i1050_3_;
        this.field_148036_j = 0.0F;
-@@ -49,7 +49,7 @@
+@@ -52,7 +52,7 @@
        this.func_152765_a(p_i1050_1_, p_i1050_4_);
     }
  
@@ -18,7 +18,7 @@
        JsonParser jsonparser = new JsonParser();
        IResource iresource = null;
  
-@@ -116,7 +116,7 @@
+@@ -119,7 +119,7 @@
  
     }
  
@@ -27,7 +27,7 @@
        JsonObject jsonobject = JsonUtils.func_151210_l(p_152764_2_, "pass");
        String s = JsonUtils.func_151200_h(jsonobject, "name");
        String s1 = JsonUtils.func_151200_h(jsonobject, "intarget");
-@@ -266,7 +266,7 @@
+@@ -269,7 +269,7 @@
        this.field_148031_d.clear();
     }
  
