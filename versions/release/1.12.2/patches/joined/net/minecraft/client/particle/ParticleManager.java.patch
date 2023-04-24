@@ -9,4 +9,4 @@
 +         final int i = i_nf;
           for(int j = 0; j < 2; ++j) {
              if (!this.field_78876_b[i][j].isEmpty()) {
-                switch(j) {
+                switch (j) {

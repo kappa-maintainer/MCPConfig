@@ -11,8 +11,7 @@
     public static <T extends Comparable<T>> String func_185919_a(Block p_185919_0_, IProperty<T> p_185919_1_) {
 @@ -108,7 +108,7 @@
  
-       while(unmodifiableiterator.hasNext()) {
-          IProperty<?> iproperty = (IProperty)unmodifiableiterator.next();
+       for(IProperty<?> iproperty : this.field_177624_d.values()) {
 -         list.add(iproperty.func_177700_c());
 +         list.add(((IProperty)iproperty).func_177700_c());
        }

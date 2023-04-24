@@ -14,7 +14,7 @@ class JarExec extends JavaExec {
     
     @Override
     public final void exec() {
-        this.findMainClass()
+        //this.findMainClass()
         this.pushClasspath()
         this.preExec()
         //project.logger.lifecycle('Arguments: ' + args)

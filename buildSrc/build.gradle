@@ -1,13 +1,13 @@
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url = 'http://files.minecraftforge.net/maven/'}
+    maven { url = 'https://files.minecraftforge.net/maven/'}
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.5'
-    compile 'com.google.guava:guava:25.1-jre'
-    compile 'org.ow2.asm:asm:8.0.1'
-    compile 'org.ow2.asm:asm-tree:8.0.1'
-    compile 'net.minecraftforge:srgutils:0.2.+'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.guava:guava:25.1-jre'
+    implementation 'org.ow2.asm:asm:8.0.1'
+    implementation 'org.ow2.asm:asm-tree:8.0.1'
+    implementation 'net.minecraftforge:srgutils:0.2.+'
 }

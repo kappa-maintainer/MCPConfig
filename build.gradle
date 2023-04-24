@@ -36,11 +36,11 @@ import java.nio.file.Files
 
 plugins {
     id 'de.undercouch.download' version '4.0.4'
-    id 'uk.jamierocks.propatcher' version '1.3.2' apply false
+    id 'uk.jamierocks.propatcher' version '2.0.1' apply false
     id 'net.rdrei.android.buildtimetracker' version '0.11.0'
 }
-apply plugin: 'maven'
-
+apply plugin: 'maven-publish'
+apply plugin: 'java'
 archivesBaseName = 'mcp_config'
 group = 'de.oceanlabs.mcp'
 
@@ -105,7 +105,6 @@ buildtimetracker {
 
 subprojects {
     apply plugin: 'de.undercouch.download'
-    apply plugin: 'maven'
     apply plugin: 'maven-publish'
     archivesBaseName = rootProject.archivesBaseName
     group = rootProject.group
@@ -821,9 +820,9 @@ subprojects {
 
                         task "project${child.name}Reset"(type: ResetSourcesTask, dependsOn: ["project${child.name}", "fernflower${child.name}"] + (MCPNAMES == null ? [] : ["mcpmap${child.name}"])) {
                             if (MCPNAMES == null)
-                                root tasks.getByName("fernflower${child.name}").dest
+                                rootZip tasks.getByName("fernflower${child.name}").dest
                             else
-                                root tasks.getByName("mcpmap${child.name}").outputs.files.singleFile
+                                rootZip tasks.getByName("mcpmap${child.name}").outputs.files.singleFile
                             target new File(dir, "src/main/java")
                         }
                         tasks.getByName("project${child.name}Reset").mustRunAfter "project${child.name}"
@@ -839,7 +838,7 @@ subprojects {
                             projectApplyPatches.dependsOn "project${child.name}ApplyPatches"
 
                             task "project${child.name}MakePatches"(type: MakePatchesTask, dependsOn: ["fernflower${child.name}"]) {
-                                root tasks.getByName("fernflower${child.name}").dest
+                                rootZip tasks.getByName("fernflower${child.name}").dest
                                 target new File(dir, 'src/main/java')
                                 patches dir_patches
                                 doLast { //TODO: Update ProPatcher to normalize line endings
@@ -1011,7 +1010,7 @@ subprojects {
                 ]
             ]
             json {
-                spec 1
+                spec 4
                 version project.version
                 data {
                     access 'config/access.txt'
@@ -1203,11 +1202,11 @@ subprojects {
             }
         }
     }
-
+    /*
     artifacts {
         archives makeZip
         archives makeZipTimed
-    }
+    }*/
 
     publishing {
         publications {
@@ -1270,7 +1269,7 @@ subprojects {
                         username = project.properties.mavenUser
                         password = project.properties.mavenPassword
                     }
-                    url 'https://files.minecraftforge.net/maven/manage/upload'
+                    url 'https://maven.outlands.top/releases'
                 } else {
                     url 'file://' + rootProject.file('repo').getAbsolutePath()
                 }

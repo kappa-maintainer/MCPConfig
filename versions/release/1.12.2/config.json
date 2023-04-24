@@ -1,10 +1,13 @@
 {
+    "java_target": 17,
     "mcinjector": {
-        "version": "de.oceanlabs.mcp:mcinjector:3.7.3:fatjar",
-        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"]
+        "version": "de.oceanlabs.mcp:mcinjector:3.8.2:fatjar",
+        "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"],
+        "repo": "https://maven.outlands.top/releases/"
     },
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:1.0.342.8",
+        "version": "net.minecraftforge:forgeflower:2.0.627.2",
+        "java_version": 17,
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"]
     },
@@ -19,8 +22,8 @@
         "repo": "https://repo1.maven.org/maven2/"
     },
     "libraries": {
-        "client": ["com.google.code.findbugs:jsr305:3.0.1"],
-        "server": ["com.google.code.findbugs:jsr305:3.0.1"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.1", "net.minecraftforge:mergetool:0.2.3.2:forge"]
+        "client": ["com.google.code.findbugs:jsr305:3.0.2"],
+        "server": ["com.google.code.findbugs:jsr305:3.0.2"],
+        "joined": ["com.google.code.findbugs:jsr305:3.0.2", "net.minecraftforge:mergetool:0.2.3.2:forge"]
     }
 }
