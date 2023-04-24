@@ -1012,6 +1012,8 @@ subprojects {
             json {
                 spec 4
                 version project.version
+                java_target 17
+                encoding "UTF-8"
                 data {
                     access 'config/access.txt'
                     constructors 'config/constructors.txt'
