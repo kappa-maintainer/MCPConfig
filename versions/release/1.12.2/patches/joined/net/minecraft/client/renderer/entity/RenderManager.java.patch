@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/entity/RenderManager.java
 +++ b/net/minecraft/client/renderer/entity/RenderManager.java
-@@ -234,9 +234,9 @@
+@@ -233,9 +233,9 @@
     }
  
     public <T extends Entity> Render<T> func_78715_a(Class<? extends Entity> p_78715_1_) {
@@ -12,7 +12,7 @@
           this.field_78729_o.put(p_78715_1_, render);
        }
  
-@@ -248,7 +248,7 @@
+@@ -247,7 +247,7 @@
        if (p_78713_1_ instanceof AbstractClientPlayer) {
           String s = ((AbstractClientPlayer)p_78713_1_).func_175154_l();
           RenderPlayer renderplayer = this.field_178636_l.get(s);

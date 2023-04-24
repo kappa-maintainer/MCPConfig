@@ -6,5 +6,6 @@
     public void func_192083_a(Map<ResourceLocation, Advancement.Builder> p_192083_1_) {
 -      Function<ResourceLocation, Advancement> function = Functions.forMap(this.field_192092_b, (Advancement)null);
 +      Function<ResourceLocation, Advancement> function = Functions.forMap(this.field_192092_b, null);
-
+ 
        while(!p_192083_1_.isEmpty()) {
+          boolean flag = false;

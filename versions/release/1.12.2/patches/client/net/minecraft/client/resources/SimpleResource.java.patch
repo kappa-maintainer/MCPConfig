@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/resources/SimpleResource.java
 +++ b/net/minecraft/client/resources/SimpleResource.java
-@@ -66,7 +66,7 @@
+@@ -63,7 +63,7 @@
              }
           }
  

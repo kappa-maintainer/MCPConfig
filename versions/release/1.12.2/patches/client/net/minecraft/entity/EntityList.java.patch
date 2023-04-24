@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/EntityList.java
 +++ b/net/minecraft/entity/EntityList.java
-@@ -358,7 +358,7 @@
+@@ -353,7 +353,7 @@
           field_191309_d.add(resourcelocation);
  
           while(field_191311_g.size() <= p_191303_0_) {

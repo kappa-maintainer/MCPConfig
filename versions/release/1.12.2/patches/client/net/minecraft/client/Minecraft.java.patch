@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/Minecraft.java
 +++ b/net/minecraft/client/Minecraft.java
-@@ -419,7 +419,7 @@
+@@ -407,7 +407,7 @@
        }
     }
  
@@ -9,7 +9,7 @@
        this.field_71474_y = new GameSettings(this, this.field_71412_D);
        this.field_191950_u = new CreativeSettings(this, this.field_71412_D);
        this.field_110449_ao.add(this.field_110450_ap);
-@@ -1286,6 +1286,7 @@
+@@ -1241,6 +1241,7 @@
        }
     }
  

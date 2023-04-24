@@ -5,9 +5,10 @@ buildscript {
         jcenter()
         maven { url = 'https://files.minecraftforge.net/maven/'}
         maven { url = 'https://plugins.gradle.org/m2/' }
+        maven { url = 'https://maven.outlands.top/releases/' }
     }
     dependencies {
-        classpath 'net.minecraftforge:mapping-verifier:1.2.3'
+        classpath 'net.minecraftforge:mapping-verifier:2.0.8:fatjar'
         classpath 'de.siegmar:fastcsv:1.0.3'
         classpath 'net.minecraftforge:srgutils:0.2.12'
     }

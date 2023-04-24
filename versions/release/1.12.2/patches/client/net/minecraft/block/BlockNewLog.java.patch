@@ -1,6 +1,6 @@
 --- a/net/minecraft/block/BlockNewLog.java
 +++ b/net/minecraft/block/BlockNewLog.java
-@@ -68,6 +68,7 @@
+@@ -67,6 +67,7 @@
        return iblockstate;
     }
  

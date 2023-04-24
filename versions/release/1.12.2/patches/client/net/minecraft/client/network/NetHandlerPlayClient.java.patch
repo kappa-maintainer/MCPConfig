@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/network/NetHandlerPlayClient.java
 +++ b/net/minecraft/client/network/NetHandlerPlayClient.java
-@@ -1223,6 +1223,7 @@
+@@ -1205,6 +1205,7 @@
        p_175093_1_.func_179788_a(this.field_147300_g.func_175723_af());
     }
  
@@ -8,7 +8,7 @@
     public void func_175099_a(SPacketTitle p_175099_1_) {
        PacketThreadUtil.func_180031_a(p_175099_1_, this, this.field_147299_f);
        SPacketTitle.Type spackettitle$type = p_175099_1_.func_179807_a();
-@@ -1262,6 +1263,7 @@
+@@ -1244,6 +1245,7 @@
  
     }
  

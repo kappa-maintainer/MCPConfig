@@ -1,6 +1,6 @@
 --- a/net/minecraft/block/BlockHugeMushroom.java
 +++ b/net/minecraft/block/BlockHugeMushroom.java
-@@ -141,6 +141,7 @@
+@@ -140,6 +140,7 @@
        }
     }
  

@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/gui/GuiOverlayDebug.java
 +++ b/net/minecraft/client/gui/GuiOverlayDebug.java
-@@ -88,6 +88,7 @@
+@@ -84,6 +84,7 @@
  
     }
  
@@ -8,7 +8,8 @@
     protected List<String> call() {
        BlockPos blockpos = new BlockPos(this.field_175242_a.func_175606_aa().field_70165_t, this.field_175242_a.func_175606_aa().func_174813_aQ().field_72338_b, this.field_175242_a.func_175606_aa().field_70161_v);
        if (this.field_175242_a.func_189648_am()) {
-@@ -171,7 +172,7 @@
+@@ -164,7 +165,7 @@
+ 
              for(Map.Entry<IProperty<?>, Comparable<?>> entry : iblockstate.func_177228_b().entrySet()) {
                 IProperty<T> iproperty = entry.getKey();
 -               T t = entry.getValue();

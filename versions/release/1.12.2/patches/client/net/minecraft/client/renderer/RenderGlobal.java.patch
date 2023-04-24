@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/renderer/RenderGlobal.java
 +++ b/net/minecraft/client/renderer/RenderGlobal.java
-@@ -920,6 +920,7 @@
+@@ -917,6 +917,7 @@
        return l;
     }
  

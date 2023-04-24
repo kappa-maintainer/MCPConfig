@@ -1,6 +1,6 @@
 --- a/net/minecraft/command/EntitySelector.java
 +++ b/net/minecraft/command/EntitySelector.java
-@@ -270,13 +271,14 @@
+@@ -270,7 +270,7 @@
  
     private static List<Predicate<Entity>> func_179659_d(Map<String, String> p_179659_0_) {
        List<Predicate<Entity>> list = Lists.newArrayList();
@@ -9,39 +9,3 @@
        final boolean flag = s != null && s.startsWith("!");
        if (flag) {
           s = s.substring(1);
-       }
- 
-       if (s != null) {
-+         final String s_f_ = s;
-          list.add(new Predicate<Entity>() {
-             public boolean apply(@Nullable Entity p_apply_1_) {
-                if (!(p_apply_1_ instanceof EntityLivingBase)) {
-@@ -285,7 +287,7 @@
-                   EntityLivingBase entitylivingbase = (EntityLivingBase)p_apply_1_;
-                   Team team = entitylivingbase.func_96124_cp();
-                   String s1 = team == null ? "" : team.func_96661_b();
--                  return s1.equals(s) != flag;
-+                  return s1.equals(s_f_) != flag;
-                }
-             }
-          });
-@@ -340,16 +342,17 @@
- 
-    private static List<Predicate<Entity>> func_179647_f(Map<String, String> p_179647_0_) {
-       List<Predicate<Entity>> list = Lists.newArrayList();
--      final String s = func_179651_b(p_179647_0_, field_190848_v);
-+      String s = func_179651_b(p_179647_0_, field_190848_v);
-       final boolean flag = s != null && s.startsWith("!");
-       if (flag) {
-          s = s.substring(1);
-       }
- 
-       if (s != null) {
-+         final String s_f_ = s;
-          list.add(new Predicate<Entity>() {
-             public boolean apply(@Nullable Entity p_apply_1_) {
--               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s) != flag;
-+               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s_f_) != flag;
-             }
-          });
-       }

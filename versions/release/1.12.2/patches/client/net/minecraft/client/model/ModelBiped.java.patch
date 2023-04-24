@@ -1,6 +1,6 @@
 --- a/net/minecraft/client/model/ModelBiped.java
 +++ b/net/minecraft/client/model/ModelBiped.java
-@@ -95,6 +95,7 @@
+@@ -90,6 +90,7 @@
        GlStateManager.func_179121_F();
     }
  

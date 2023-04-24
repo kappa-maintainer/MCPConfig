@@ -1,6 +1,6 @@
 --- a/net/minecraft/block/BlockFurnace.java
 +++ b/net/minecraft/block/BlockFurnace.java
-@@ -70,6 +70,7 @@
+@@ -69,6 +69,7 @@
     }
  
     @SideOnly(Side.CLIENT)

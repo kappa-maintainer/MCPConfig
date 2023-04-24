@@ -1,6 +1,6 @@
 --- a/net/minecraft/block/BlockStairs.java
 +++ b/net/minecraft/block/BlockStairs.java
-@@ -352,6 +352,7 @@
+@@ -326,6 +326,7 @@
        return p_185499_1_.func_177226_a(field_176309_a, p_185499_2_.func_185831_a(p_185499_1_.func_177229_b(field_176309_a)));
     }
  
