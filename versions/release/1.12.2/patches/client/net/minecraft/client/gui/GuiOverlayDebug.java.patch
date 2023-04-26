@@ -8,11 +8,15 @@
     protected List<String> call() {
        BlockPos blockpos = new BlockPos(this.field_175242_a.func_175606_aa().field_70165_t, this.field_175242_a.func_175606_aa().func_174813_aQ().field_72338_b, this.field_175242_a.func_175606_aa().field_70161_v);
        if (this.field_175242_a.func_189648_am()) {
-@@ -164,7 +165,7 @@
+@@ -162,9 +163,9 @@
+             list.add("");
+             list.add(String.valueOf(Block.field_149771_c.func_177774_c(iblockstate.func_177230_c())));
  
-             for(Map.Entry<IProperty<?>, Comparable<?>> entry : iblockstate.func_177228_b().entrySet()) {
-                IProperty<T> iproperty = entry.getKey();
+-            for(Map.Entry<IProperty<?>, Comparable<?>> entry : iblockstate.func_177228_b().entrySet()) {
+-               IProperty<T> iproperty = entry.getKey();
 -               T t = entry.getValue();
++            for(Map.Entry entry : iblockstate.func_177228_b().entrySet()) {
++               IProperty iproperty = (IProperty) entry.getKey();
 +               T t = (T)entry.getValue();
                 String s = iproperty.func_177702_a(t);
                 if (Boolean.TRUE.equals(t)) {

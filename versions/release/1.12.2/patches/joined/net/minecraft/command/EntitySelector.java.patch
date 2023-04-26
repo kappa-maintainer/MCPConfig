@@ -1,5 +1,14 @@
 --- a/net/minecraft/command/EntitySelector.java
 +++ b/net/minecraft/command/EntitySelector.java
+@@ -149,7 +149,7 @@
+                            }
+                         }
+ 
+-                        return Lists.newArrayList((T[])(entity));
++                        return Lists.newArrayList((T)(entity));
+                      }
+ 
+                      return Collections.emptyList();
 @@ -270,7 +270,7 @@
  
     private static List<Predicate<Entity>> func_179659_d(Map<String, String> p_179659_0_) {
@@ -9,3 +18,12 @@
        final boolean flag = s != null && s.startsWith("!");
        if (flag) {
           s = s.substring(1);
+@@ -511,7 +511,7 @@
+ 
+       Entity entity = p_179658_2_.func_174793_f();
+       if (entity != null && p_179658_3_.isAssignableFrom(entity.getClass()) && i == 1 && p_179658_0_.contains(entity) && !"r".equals(p_179658_4_)) {
+-         p_179658_0_ = Lists.newArrayList((T[])(entity));
++         p_179658_0_ = Lists.newArrayList((T)(entity));
+       }
+ 
+       if (i != 0) {

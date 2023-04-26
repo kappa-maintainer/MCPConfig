@@ -1,0 +1,20 @@
+--- a/net/minecraft/network/datasync/EntityDataManager.java
++++ b/net/minecraft/network/datasync/EntityDataManager.java
+@@ -95,7 +95,7 @@
+    private <T> EntityDataManager.DataEntry<T> func_187219_c(DataParameter<T> p_187219_1_) {
+       this.field_187235_d.readLock().lock();
+ 
+-      EntityDataManager.DataEntry<T> dataentry;
++      EntityDataManager.DataEntry dataentry;
+       try {
+          dataentry = this.field_187234_c.get(p_187219_1_.func_187155_a());
+       } catch (Throwable throwable) {
+@@ -226,7 +226,7 @@
+             throw new DecoderException("Unknown serializer type " + j);
+          }
+ 
+-         list.add(new EntityDataManager.DataEntry<>(dataserializer.func_187161_a(i), dataserializer.func_187159_a(p_187215_0_)));
++         list.add(new EntityDataManager.DataEntry(dataserializer.func_187161_a(i), dataserializer.func_187159_a(p_187215_0_)));
+       }
+ 
+       return list;

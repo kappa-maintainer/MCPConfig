@@ -1,0 +1,11 @@
+--- a/net/minecraft/client/resources/data/MetadataSerializer.java
++++ b/net/minecraft/client/resources/data/MetadataSerializer.java
+@@ -38,7 +38,7 @@
+          if (registration == null) {
+             throw new IllegalArgumentException("Don't know how to handle metadata section '" + p_110503_1_ + "'");
+          } else {
+-            return this.func_110505_a().fromJson(p_110503_2_.getAsJsonObject(p_110503_1_), registration.field_110500_b);
++            (T) return this.func_110505_a().fromJson(p_110503_2_.getAsJsonObject(p_110503_1_), registration.field_110500_b);
+          }
+       }
+    }

@@ -1,6 +1,7 @@
 --- a/net/minecraft/nbt/NBTUtil.java
 +++ b/net/minecraft/nbt/NBTUtil.java
-@@ -222,7 +222,7 @@
+@@ -221,7 +221,7 @@
+ 
        return p_190009_0_;
     }
 -
@@ -8,4 +9,3 @@
     private static <T extends Comparable<T>> String func_190010_a(IProperty<T> p_190010_0_, Comparable<?> p_190010_1_) {
        return p_190010_0_.func_177702_a((T)p_190010_1_);
     }
- }
