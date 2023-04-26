@@ -1,0 +1,30 @@
+--- a/net/minecraft/world/storage/WorldInfo.java
++++ b/net/minecraft/world/storage/WorldInfo.java
+@@ -605,8 +605,26 @@
+       });
+       p_85118_1_.func_189529_a("Level storage version", new ICrashReportDetail<String>() {
+          public String call() throws Exception {
+-            // $FF: Couldn't be decompiled
++            String s = "Unknown?";
++
++            try
++            {
++               switch (WorldInfo.this.field_76103_l)
++               {
++                  case 19132:
++                     s = "McRegion";
++                     break;
++                  case 19133:
++                     s = "Anvil";
+          }
++            }
++            catch (Throwable var3)
++            {
++               ;
++            }
++
++            return String.format("0x%05X - %s", WorldInfo.this.field_76103_l, s);
++         }
+       });
+       p_85118_1_.func_189529_a("Level weather", new ICrashReportDetail<String>() {
+          public String call() throws Exception {

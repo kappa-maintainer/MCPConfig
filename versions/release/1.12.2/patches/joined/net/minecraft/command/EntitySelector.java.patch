@@ -18,7 +18,27 @@
        final boolean flag = s != null && s.startsWith("!");
        if (flag) {
           s = s.substring(1);
-@@ -511,7 +511,7 @@
+@@ -340,16 +340,17 @@
+ 
+    private static List<Predicate<Entity>> func_179647_f(Map<String, String> p_179647_0_) {
+       List<Predicate<Entity>> list = Lists.newArrayList();
+-      final String s = func_179651_b(p_179647_0_, field_190848_v);
++      String s = func_179651_b(p_179647_0_, field_190848_v);
+       final boolean flag = s != null && s.startsWith("!");
+       if (flag) {
+          s = s.substring(1);
+       }
+ 
+       if (s != null) {
++         final String s1 = s;
+          list.add(new Predicate<Entity>() {
+             public boolean apply(@Nullable Entity p_apply_1_) {
+-               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s) != flag;
++               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s1) != flag;
+             }
+          });
+       }
+@@ -511,7 +512,7 @@
  
        Entity entity = p_179658_2_.func_174793_f();
        if (entity != null && p_179658_3_.isAssignableFrom(entity.getClass()) && i == 1 && p_179658_0_.contains(entity) && !"r".equals(p_179658_4_)) {
