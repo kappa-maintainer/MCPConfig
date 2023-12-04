@@ -434,26 +434,26 @@ subprojects {
     generateMojMap.onlyIf { hasMojmap }
 
     task filterClient(type: Zip, dependsOn: [downloadClient]) {
-        archiveName = 'client.slim.jar'
-        destinationDir = file(PATH_CACHED_VERSION)
+        archiveFileName = 'client.slim.jar'
+        destinationDirectory = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
         IMappingFile.load(file(PATH_TSRG)).classes.each { include it.original + '.class' }
     }
     task filterClientExtra(type: Zip, dependsOn: [downloadClient]) {
-        archiveName = 'client.extra.jar'
-        destinationDir = file(PATH_CACHED_VERSION)
+        archiveFileName = 'client.extra.jar'
+        destinationDirectory = file(PATH_CACHED_VERSION)
         from zipTree(downloadClient.dest)
         IMappingFile.load(file(PATH_TSRG)).classes.each { exclude it.original + '.class' }
     }
     task filterServer(type: Zip, dependsOn: [downloadServer]) {
-        archiveName = 'server.slim.jar'
-        destinationDir = file(PATH_CACHED_VERSION)
+        archiveFileName = 'server.slim.jar'
+        destinationDirectory = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
         IMappingFile.load(file(PATH_TSRG)).classes.each { include it.original + '.class' }
     }
     task filterServerExtra(type: Zip, dependsOn: [downloadServer]) {
-        archiveName = 'server.extra.jar'
-        destinationDir = file(PATH_CACHED_VERSION)
+        archiveFileName = 'server.extra.jar'
+        destinationDirectory = file(PATH_CACHED_VERSION)
         from zipTree(downloadServer.dest)
         IMappingFile.load(file(PATH_TSRG)).classes.each { exclude it.original + '.class' }
     }
@@ -629,7 +629,7 @@ subprojects {
 
     }
 
-    task extractNatives(type: ExtractNatives, dependsOn: [downloadJson, downloadLibraries]) {
+    task extractNatives(type: ExtractNatives, dependsOn: [downloadJson, downloadLibraries, downloadFernflower, downloadMCInjector, downloadMergeTool, downloadRenameTool]) {
         meta downloadJson.dest
         cache file(PATH_CACHED_LIBRARIES)
         dest file(PATH_NATIVES)
@@ -885,7 +885,7 @@ subprojects {
                             }
 
                             task "test${child.name}CompileMojang"(type: JavaCompile, dependsOn: "mojmap${child.name}Rename") {
-                                destinationDir = file(PATH_MOJMAP + child.name.toLowerCase() + '/classes')
+                                destinationDirectory = file(PATH_MOJMAP + child.name.toLowerCase() + '/classes')
 
                                 source = new File(PATH_MOJMAP + child.name.toLowerCase() + '/src/main/java/')
                                 sourceCompatibility = '1.8'
@@ -930,7 +930,7 @@ subprojects {
                                 options.forkOptions.with {
                                     executable = new File(jvmHome, "bin/javac")
                                 }
-                                destinationDir = file(PATH_CACHED_VERSION + jvmName + '/classes')
+                                destinationDirectory = file(PATH_CACHED_VERSION + jvmName + '/classes')
                                 source = new File(dir, 'src/main/java')
                                 sourceCompatibility = '1.8'
                                 targetCompatibility = '1.8'
@@ -943,14 +943,14 @@ subprojects {
                                 }
                             }
                             task "testJvms${child.name}${jvmNameExt}_Clean"(type: Delete) {
-                                delete tasks[testJvmsTaskName].destinationDir
+                                delete tasks[testJvmsTaskName].destinationDirectory
                             }
                             tasks["testJvms${child.name}Compile"].dependsOn(testJvmsTaskName)
                             tasks["testJvms${child.name}"].dependsOn(testJvmsTaskName)
 
                             def testJvmsApiTaskName = "testJvms${child.name}${jvmNameExt}_Api"
                             task "${testJvmsApiTaskName}"(type: CheckAPI, dependsOn: [testJvmsTaskName, rootProject.extractRuntimeAPI]) {
-                                input = tasks[testJvmsTaskName].destinationDir
+                                input = tasks[testJvmsTaskName].destinationDirectory
                                 apis.add(rootProject.extractRuntimeAPI.dest)
                                 dest file(PATH_CACHED_VERSION + jvmName + '/api_errors.json')
                             }
@@ -1013,7 +1013,7 @@ subprojects {
             json {
                 spec 4
                 version project.version
-                java_target 17
+                java_target 21
                 encoding "UTF-8"
                 data {
                     access 'config/access.txt'
@@ -1042,9 +1042,10 @@ subprojects {
     }
 
     task makeZip(type: Zip, dependsOn: [makeSRG, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions]) {
-        baseName = project.archivesBaseName
+
         version = project.version
-        destinationDir = file(PATH_DISTRO)
+        archiveBaseName = project.archivesBaseName + "-" + version
+        destinationDirectory = file(PATH_DISTRO)
 
         from generateConfiguration
         from(fixAccessLevels){ into 'config/' }
@@ -1067,10 +1068,11 @@ subprojects {
         }
     }
 
+
     task makeZipTimed(type: Zip, dependsOn: [makeZip, extractInheritance]) {
-        baseName = project.archivesBaseName
-        version = project.version + '-' + rootProject.TIMESTAMP
-        destinationDir = file(PATH_DISTRO)
+        archiveBaseName = project.archivesBaseName
+        this.version = project.version + '-' + rootProject.TIMESTAMP
+        destinationDirectory = file(PATH_DISTRO)
         from zipTree(makeZip.archivePath)
     }
 

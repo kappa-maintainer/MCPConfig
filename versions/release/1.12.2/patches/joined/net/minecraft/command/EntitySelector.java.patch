@@ -9,7 +9,7 @@
                       }
  
                       return Collections.emptyList();
-@@ -270,7 +270,7 @@
+@@ -270,19 +270,20 @@
  
     private static List<Predicate<Entity>> func_179659_d(Map<String, String> p_179659_0_) {
        List<Predicate<Entity>> list = Lists.newArrayList();
@@ -18,7 +18,21 @@
        final boolean flag = s != null && s.startsWith("!");
        if (flag) {
           s = s.substring(1);
-@@ -340,16 +340,17 @@
+       }
+
+       if (s != null) {
++         final String s2 = s;
+          list.add(new Predicate<Entity>() {
+             public boolean apply(@Nullable Entity p_apply_1_) {
+                if (!(p_apply_1_ instanceof EntityLivingBase)) {
+                   return false;
+                } else {
+                   EntityLivingBase entitylivingbase = (EntityLivingBase)p_apply_1_;
+                   Team team = entitylivingbase.func_96124_cp();
+                   String s1 = team == null ? "" : team.func_96661_b();
+-                  return s1.equals(s) != flag;
++                  return s1.equals(s2) != flag;
+@@ -340,16 +341,17 @@
  
     private static List<Predicate<Entity>> func_179647_f(Map<String, String> p_179647_0_) {
        List<Predicate<Entity>> list = Lists.newArrayList();
@@ -38,7 +52,7 @@
              }
           });
        }
-@@ -511,7 +512,7 @@
+@@ -511,7 +513,7 @@
  
        Entity entity = p_179658_2_.func_174793_f();
        if (entity != null && p_179658_3_.isAssignableFrom(entity.getClass()) && i == 1 && p_179658_0_.contains(entity) && !"r".equals(p_179658_4_)) {
