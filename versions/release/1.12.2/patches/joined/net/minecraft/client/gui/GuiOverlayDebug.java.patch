@@ -8,7 +8,7 @@
     protected List<String> call() {
        BlockPos blockpos = new BlockPos(
           this.field_175242_a.func_175606_aa().field_70165_t,
-@@ -243,9 +243,9 @@
+@@ -244,9 +245,9 @@
              list.add("");
              list.add(String.valueOf(Block.field_149771_c.func_177774_c(iblockstate.func_177230_c())));
  
