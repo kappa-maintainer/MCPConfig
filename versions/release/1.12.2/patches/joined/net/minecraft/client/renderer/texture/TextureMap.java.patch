@@ -1,11 +1,12 @@
 --- a/net/minecraft/client/renderer/texture/TextureMap.java
 +++ b/net/minecraft/client/renderer/texture/TextureMap.java
-@@ -51,7 +51,7 @@
+@@ -51,8 +51,8 @@
        this.field_94249_f.func_110969_c(16);
        int[][] aint1 = new int[this.field_147636_j + 1][];
        aint1[0] = aint;
 -      this.field_94249_f.func_110968_a(Lists.newArrayList(aint1));
 +      this.field_94249_f.func_110968_a(Lists.<int[][]>newArrayList(aint1));
     }
- 
+
+    @Override
     public void func_110551_a(IResourceManager p_110551_1_) throws IOException {

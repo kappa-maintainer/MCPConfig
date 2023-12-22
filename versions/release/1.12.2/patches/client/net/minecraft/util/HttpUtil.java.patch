@@ -1,11 +1,11 @@
 --- a/net/minecraft/util/HttpUtil.java
 +++ b/net/minecraft/util/HttpUtil.java
-@@ -103,7 +103,7 @@
+@@ -106,7 +106,7 @@
        }
     }
  
--   public static ListenableFuture<Object> func_180192_a(final File p_180192_0_, final String p_180192_1_, final Map<String, String> p_180192_2_, final int p_180192_3_, @Nullable final IProgressUpdate p_180192_4_, final Proxy p_180192_5_) {
-+   public static ListenableFuture func_180192_a(final File p_180192_0_, final String p_180192_1_, final Map<String, String> p_180192_2_, final int p_180192_3_, @Nullable final IProgressUpdate p_180192_4_, final Proxy p_180192_5_) {
-       return field_180193_a.submit(new Runnable() {
-          public void run() {
-             HttpURLConnection httpurlconnection = null;
+-   public static ListenableFuture<Object> func_180192_a(
++   public static ListenableFuture func_180192_a(
+       final File p_180192_0_,
+       final String p_180192_1_,
+       final Map<String, String> p_180192_2_,

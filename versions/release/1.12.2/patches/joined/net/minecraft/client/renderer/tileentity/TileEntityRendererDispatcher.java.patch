@@ -1,11 +1,10 @@
 --- a/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
 +++ b/net/minecraft/client/renderer/tileentity/TileEntityRendererDispatcher.java
-@@ -77,11 +77,11 @@
+@@ -76,11 +76,11 @@
     public <T extends TileEntity> TileEntitySpecialRenderer<T> func_147546_a(Class<? extends TileEntity> p_147546_1_) {
        TileEntitySpecialRenderer<? extends TileEntity> tileentityspecialrenderer = this.field_147559_m.get(p_147546_1_);
        if (tileentityspecialrenderer == null && p_147546_1_ != TileEntity.class) {
--         tileentityspecialrenderer = this.func_147546_a(p_147546_1_.getSuperclass());
-+         tileentityspecialrenderer = this.func_147546_a((Class<? extends TileEntity>) p_147546_1_.getSuperclass());
+          tileentityspecialrenderer = this.func_147546_a((Class<? extends TileEntity>)p_147546_1_.getSuperclass());
           this.field_147559_m.put(p_147546_1_, tileentityspecialrenderer);
        }
  

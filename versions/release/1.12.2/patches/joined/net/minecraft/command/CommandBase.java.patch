@@ -1,7 +1,7 @@
 --- a/net/minecraft/command/CommandBase.java
 +++ b/net/minecraft/command/CommandBase.java
-@@ -180,7 +180,7 @@
-       return (List<EntityPlayerMP>)(list.isEmpty() ? Lists.newArrayList(func_193512_a(p_193513_0_, (EntityPlayerMP)null, p_193513_2_)) : list);
+@@ -186,7 +186,7 @@
+       return (List<EntityPlayerMP>)(list.isEmpty() ? Lists.newArrayList(func_193512_a(p_193513_0_, null, p_193513_2_)) : list);
     }
  
 -   public static EntityPlayerMP func_184888_a(MinecraftServer p_184888_0_, ICommandSender p_184888_1_, String p_184888_2_) throws CommandException, PlayerNotFoundException {
@@ -9,7 +9,7 @@
        return func_193512_a(p_184888_0_, EntitySelector.func_82386_a(p_184888_1_, p_184888_2_), p_184888_2_);
     }
  
-@@ -203,11 +203,11 @@
+@@ -209,11 +209,11 @@
        }
     }
  
@@ -23,13 +23,15 @@
        Entity entity = EntitySelector.func_179652_a(p_184884_1_, p_184884_2_, p_184884_3_);
        if (entity == null) {
           entity = p_184884_0_.func_184103_al().func_152612_a(p_184884_2_);
-@@ -234,11 +234,11 @@
+@@ -240,13 +240,13 @@
        }
     }
  
 -   public static List<Entity> func_184890_c(MinecraftServer p_184890_0_, ICommandSender p_184890_1_, String p_184890_2_) throws CommandException, EntityNotFoundException {
 +   public static List<Entity> func_184890_c(MinecraftServer p_184890_0_, ICommandSender p_184890_1_, String p_184890_2_) throws EntityNotFoundException, CommandException {
-       return (List<Entity>)(EntitySelector.func_82378_b(p_184890_2_) ? EntitySelector.func_179656_b(p_184890_1_, p_184890_2_, Entity.class) : Lists.newArrayList(func_184885_b(p_184890_0_, p_184890_1_, p_184890_2_)));
+       return (List<Entity>)(EntitySelector.func_82378_b(p_184890_2_)
+          ? EntitySelector.func_179656_b(p_184890_1_, p_184890_2_, Entity.class)
+          : Lists.newArrayList(func_184885_b(p_184890_0_, p_184890_1_, p_184890_2_)));
     }
  
 -   public static String func_184886_d(MinecraftServer p_184886_0_, ICommandSender p_184886_1_, String p_184886_2_) throws CommandException, PlayerNotFoundException {
@@ -37,7 +39,7 @@
        try {
           return func_184888_a(p_184886_0_, p_184886_1_, p_184886_2_).func_70005_c_();
        } catch (CommandException commandexception) {
-@@ -250,7 +250,7 @@
+@@ -258,7 +258,7 @@
        }
     }
  
@@ -46,7 +48,7 @@
        try {
           return func_184888_a(p_184891_0_, p_184891_1_, p_184891_2_).func_70005_c_();
        } catch (PlayerNotFoundException playernotfoundexception) {
-@@ -270,7 +270,7 @@
+@@ -278,7 +278,7 @@
        return func_147176_a(p_147178_0_, p_147178_1_, p_147178_2_, false);
     }
  
@@ -55,7 +57,7 @@
        ITextComponent itextcomponent = new TextComponentString("");
  
        for(int i = p_147176_2_; i < p_147176_1_.length; ++i) {
-@@ -430,7 +430,7 @@
+@@ -438,7 +438,7 @@
     }
  
     private static <T extends Comparable<T>> IBlockState func_190793_a(IBlockState p_190793_0_, IProperty<T> p_190793_1_, Comparable<?> p_190793_2_) {

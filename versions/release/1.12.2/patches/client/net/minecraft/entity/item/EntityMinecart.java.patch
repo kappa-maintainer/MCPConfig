@@ -1,7 +1,7 @@
 --- a/net/minecraft/entity/item/EntityMinecart.java
 +++ b/net/minecraft/entity/item/EntityMinecart.java
-@@ -334,6 +334,7 @@
- 
+@@ -356,6 +356,7 @@
+       }
     }
  
 +   @SuppressWarnings("incomplete-switch")

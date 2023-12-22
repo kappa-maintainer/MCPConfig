@@ -6,14 +6,15 @@
         "repo": "https://maven.outlands.top/releases/"
     },
     "fernflower": {
-        "version": "net.minecraftforge:forgeflower:2.0.627.2",
+        "version": "org.vineflower:vineflower:1.9.3",
         "java_version": 21,
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
-        "jvmargs": ["-Xmx4G"]
+        "jvmargs": ["-Xmx4G"],
+        "repo": "https://repo1.maven.org/maven2/"
     },
     "merge": {
-        "version": "net.minecraftforge:mergetool:0.2.3.2:fatjar",
-        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}"],
+        "version": "net.minecraftforge:mergetool:1.1.11:fatjar",
+        "args": ["--client", "{client}", "--server", "{server}", "--ann", "{version}", "--output", "{output}", "--inject", "false"],
         "jvmargs": []
     },
     "rename": {
@@ -24,6 +25,6 @@
     "libraries": {
         "client": ["com.google.code.findbugs:jsr305:3.0.2"],
         "server": ["com.google.code.findbugs:jsr305:3.0.2"],
-        "joined": ["com.google.code.findbugs:jsr305:3.0.2", "net.minecraftforge:mergetool:0.2.3.2:forge"]
+        "joined": ["com.google.code.findbugs:jsr305:3.0.2", "net.minecraftforge:mergetool:1.1.7:api"]
     }
 }

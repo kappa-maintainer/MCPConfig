@@ -1,11 +1,13 @@
 --- a/net/minecraft/entity/ai/EntityAILookAtVillager.java
 +++ b/net/minecraft/entity/ai/EntityAILookAtVillager.java
-@@ -19,7 +19,7 @@
+@@ -20,9 +20,9 @@
        } else if (this.field_75397_a.func_70681_au().nextInt(8000) != 0) {
           return false;
        } else {
--         this.field_75395_b = this.field_75397_a.field_70170_p.func_72857_a(EntityVillager.class, this.field_75397_a.func_174813_aQ().func_72314_b(6.0D, 2.0D, 6.0D), this.field_75397_a);
-+         this.field_75395_b = (EntityVillager) this.field_75397_a.field_70170_p.func_72857_a(EntityVillager.class, this.field_75397_a.func_174813_aQ().func_72314_b(6.0D, 2.0D, 6.0D), this.field_75397_a);
+-         this.field_75395_b = this.field_75397_a
++         this.field_75395_b = (EntityVillager) this.field_75397_a
+             .field_70170_p
+             .func_72857_a(EntityVillager.class, this.field_75397_a.func_174813_aQ().func_72314_b(6.0, 2.0, 6.0), this.field_75397_a);
           return this.field_75395_b != null;
        }
     }

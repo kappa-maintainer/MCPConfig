@@ -1,10 +1,11 @@
 --- a/net/minecraft/block/BlockNewLog.java
 +++ b/net/minecraft/block/BlockNewLog.java
-@@ -67,6 +67,7 @@
+@@ -75,7 +75,8 @@
        return iblockstate;
     }
  
 +   @SuppressWarnings("incomplete-switch")
+    @Override
     public int func_176201_c(IBlockState p_176201_1_) {
        int i = 0;
        i |= p_176201_1_.func_177229_b(field_176300_b).func_176839_a() - 4;

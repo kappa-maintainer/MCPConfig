@@ -1,10 +1,11 @@
 --- a/net/minecraft/block/BlockStairs.java
 +++ b/net/minecraft/block/BlockStairs.java
-@@ -326,6 +326,7 @@
+@@ -395,7 +395,8 @@
        return p_185499_1_.func_177226_a(field_176309_a, p_185499_2_.func_185831_a(p_185499_1_.func_177229_b(field_176309_a)));
     }
- 
+
 +   @SuppressWarnings("incomplete-switch")
+    @Override
     public IBlockState func_185471_a(IBlockState p_185471_1_, Mirror p_185471_2_) {
        EnumFacing enumfacing = p_185471_1_.func_177229_b(field_176309_a);
        BlockStairs.EnumShape blockstairs$enumshape = p_185471_1_.func_177229_b(field_176310_M);

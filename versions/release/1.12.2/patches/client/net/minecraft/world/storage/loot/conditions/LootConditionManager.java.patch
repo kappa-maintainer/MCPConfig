@@ -13,7 +13,7 @@
     }
  
     public static <T extends LootCondition> LootCondition.Serializer<T> func_186640_a(T p_186640_0_) {
--      LootCondition.Serializer<T> serializer = field_186643_b.get(p_186640_0_.getClass());
+-      LootCondition.Serializer<T> serializer = (LootCondition.Serializer)field_186643_b.get(p_186640_0_.getClass());
 +      LootCondition.Serializer<T> serializer = (LootCondition.Serializer<T>) field_186643_b.get(p_186640_0_.getClass());
        if (serializer == null) {
           throw new IllegalArgumentException("Unknown loot item condition " + p_186640_0_);
