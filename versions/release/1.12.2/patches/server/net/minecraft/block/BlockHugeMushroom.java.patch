@@ -1,6 +1,7 @@
 --- a/net/minecraft/block/BlockHugeMushroom.java
 +++ b/net/minecraft/block/BlockHugeMushroom.java
-@@ -157,7 +157,8 @@
+@@ -156,7 +156,8 @@
+             return p_185499_1_;
        }
     }
 

@@ -1,6 +1,8 @@
 --- a/net/minecraft/block/BlockFurnace.java
 +++ b/net/minecraft/block/BlockFurnace.java
-@@ -71,6 +71,7 @@
+@@ -69,8 +69,9 @@
+          p_176445_1_.func_180501_a(p_176445_2_, p_176445_3_.func_177226_a(field_176447_a, enumfacing), 2);
+       }
     }
 
 +   @SuppressWarnings("incomplete-switch")
