@@ -7,6 +7,6 @@
 -      this.field_94249_f.func_110968_a(Lists.newArrayList(aint1));
 +      this.field_94249_f.func_110968_a(Lists.<int[][]>newArrayList(aint1));
     }
-
+ 
     @Override
     public void func_110551_a(IResourceManager p_110551_1_) throws IOException {

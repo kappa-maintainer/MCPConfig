@@ -3,7 +3,7 @@
 @@ -229,7 +229,8 @@
        return this.field_174861_a;
     }
-
+ 
 +   @SuppressWarnings("incomplete-switch")
     @Override
     public float func_184229_a(Rotation p_184229_1_) {

@@ -2,7 +2,7 @@
 +++ b/net/minecraft/block/BlockFurnace.java
 @@ -69,7 +69,8 @@
     }
-
+ 
 +   @SuppressWarnings("incomplete-switch")
     @Override
     public void func_180655_c(IBlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_) {
