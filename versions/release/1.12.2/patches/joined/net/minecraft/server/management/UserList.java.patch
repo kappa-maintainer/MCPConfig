@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/management/UserList.java
 +++ b/net/minecraft/server/management/UserList.java
-@@ -154,7 +154,7 @@
+@@ -153,8 +153,8 @@
     }
  
     @SideOnly(Side.SERVER)
@@ -9,3 +9,4 @@
        if (this.field_152695_c.exists()) {
           Collection<UserListEntry<K>> collection = null;
           BufferedReader bufferedreader = null;
+ 

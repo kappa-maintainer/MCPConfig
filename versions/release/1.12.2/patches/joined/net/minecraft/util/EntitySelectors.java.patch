@@ -13,7 +13,7 @@
                 public boolean apply(@Nullable Entity p_apply_1_) {
                    if (!p_apply_1_.func_70104_M()) {
                       return false;
-@@ -81,6 +77,7 @@
+@@ -81,7 +77,8 @@
                    }
                 }
              }

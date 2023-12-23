@@ -15,7 +15,7 @@
                    }
                 },
 -               this.field_82643_g
-+               (Predicate<EntityPlayer>)this.field_82643_g);
++               (Predicate<EntityPlayer>)this.field_82643_g)
              );
           return this.field_75309_a != null;
        }

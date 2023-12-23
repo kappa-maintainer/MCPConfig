@@ -1,6 +1,6 @@
 --- a/net/minecraft/server/management/UserList.java
 +++ b/net/minecraft/server/management/UserList.java
-@@ -154,7 +154,7 @@
+@@ -149,7 +149,7 @@
     }
 
 -   public void func_152679_g() throws FileNotFoundException, IOException {
@@ -8,3 +8,4 @@
        if (this.field_152695_c.exists()) {
           Collection<UserListEntry<K>> collection = null;
           BufferedReader bufferedreader = null;
+ 
