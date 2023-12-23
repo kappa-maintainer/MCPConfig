@@ -3,7 +3,7 @@
 @@ -18,8 +18,8 @@
        this.field_179305_a = new Inflater();
     }
-
+ 
     @Override
 -   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws Exception, DataFormatException {
 +   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws DataFormatException, Exception {

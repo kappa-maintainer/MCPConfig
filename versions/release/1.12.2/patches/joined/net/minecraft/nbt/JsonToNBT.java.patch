@@ -2,7 +2,7 @@
 +++ b/net/minecraft/nbt/JsonToNBT.java
 @@ -248,7 +248,7 @@
     }
-
+ 
     private <T extends Number> List<T> func_193603_a(byte p_193603_1_, byte p_193603_2_) throws NBTException {
 -      List<T> list = Lists.newArrayList();
 +      List list = Lists.newArrayList();
@@ -11,7 +11,7 @@
           NBTBase nbtbase = this.func_193610_d();
 @@ -258,11 +258,11 @@
           }
-
+ 
           if (p_193603_2_ == 1) {
 -            list.add((T)((NBTPrimitive)nbtbase).func_150290_f());
 +            list.add(((NBTPrimitive)nbtbase).func_150290_f());
@@ -22,5 +22,5 @@
 -            list.add((T)((NBTPrimitive)nbtbase).func_150287_d());
 +            list.add(((NBTPrimitive)nbtbase).func_150287_d());
           }
-
+ 
           if (!this.func_193613_m()) {

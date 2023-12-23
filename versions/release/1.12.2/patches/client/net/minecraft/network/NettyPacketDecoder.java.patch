@@ -3,7 +3,7 @@
 @@ -19,8 +19,8 @@
        this.field_152499_c = p_i45999_1_;
     }
-
+ 
     @Override
 -   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws IOException, Exception, IllegalAccessException, InstantiationException {
 +   protected void decode(ChannelHandlerContext p_decode_1_, ByteBuf p_decode_2_, List<Object> p_decode_3_) throws IOException, InstantiationException, IllegalAccessException, Exception {

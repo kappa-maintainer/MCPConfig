@@ -1,6 +1,6 @@
 --- a/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
 +++ b/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
-@@ -67,7 +67,7 @@
+@@ -75,7 +75,7 @@
              return true;
           }
        } else {
@@ -10,7 +10,7 @@
              .func_184150_a(
                 this.field_75299_d.field_70165_t,
 @@ -99,9 +99,9 @@
-
+       
                       return 1.0;
                    }
                 },
