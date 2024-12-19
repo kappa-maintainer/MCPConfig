@@ -1,6 +1,6 @@
 --- a/net/minecraft/network/NetworkManager.java
 +++ b/net/minecraft/network/NetworkManager.java
-@@ -115,7 +115,7 @@
+@@ -104,7 +104,7 @@
        this.func_150718_a(textcomponenttranslation);
     }
  

@@ -1,14 +1,5 @@
 --- a/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
 +++ b/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
-@@ -75,7 +75,7 @@
-             return true;
-          }
-       } else {
--         this.field_75309_a = this.field_75299_d
-+         this.field_75309_a = (T)this.field_75299_d
-             .field_70170_p
-             .func_184150_a(
-                this.field_75299_d.field_70165_t,
 @@ -99,9 +99,9 @@
        
                       return 1.0;

@@ -7,5 +7,5 @@
 -   public Packet<?> func_179244_a(EnumPacketDirection p_179244_1_, int p_179244_2_) throws IllegalAccessException, InstantiationException {
 +   public Packet<?> func_179244_a(EnumPacketDirection p_179244_1_, int p_179244_2_) throws InstantiationException, IllegalAccessException {
        Class<? extends Packet<?>> oclass = this.field_179247_h.get(p_179244_1_).get(Integer.valueOf(p_179244_2_));
-       return oclass == null ? null : oclass.newInstance();
+       return (Packet<?>)(oclass == null ? null : oclass.newInstance());
     }

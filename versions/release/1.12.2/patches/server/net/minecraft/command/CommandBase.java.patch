@@ -56,4 +56,4 @@
 +   public static ITextComponent func_147176_a(ICommandSender p_147176_0_, String[] p_147176_1_, int p_147176_2_, boolean p_147176_3_) throws PlayerNotFoundException, CommandException {
        ITextComponent itextcomponent = new TextComponentString("");
  
-       for(int i = p_147176_2_; i < p_147176_1_.length; ++i) {
+       for (int i = p_147176_2_; i < p_147176_1_.length; i++) {

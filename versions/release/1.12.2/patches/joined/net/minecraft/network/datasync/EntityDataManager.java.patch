@@ -7,7 +7,8 @@
 -      EntityDataManager.DataEntry<T> dataentry;
 +      EntityDataManager.DataEntry dataentry;
        try {
-          dataentry = (EntityDataManager.DataEntry)this.field_187234_c.get(p_187219_1_.func_187155_a());
+-         dataentry = (EntityDataManager.DataEntry<T>)this.field_187234_c.get(p_187219_1_.func_187155_a());
++         dataentry = (EntityDataManager.DataEntry)this.field_187234_c.get(p_187219_1_.func_187155_a());
        } catch (Throwable throwable) {
 @@ -225,7 +225,7 @@
              throw new DecoderException("Unknown serializer type " + j);

@@ -1,15 +1,15 @@
 --- a/net/minecraft/command/EntitySelector.java
 +++ b/net/minecraft/command/EntitySelector.java
-@@ -149,7 +149,7 @@
+@@ -153,7 +153,7 @@
                             }
                          }
  
--                        return Lists.newArrayList((T[])(entity));
+-                        return Lists.newArrayList((T[])(new Entity[]{entity}));
 +                        return Lists.newArrayList((T)(entity));
                       }
  
                       return Collections.emptyList();
-@@ -270,19 +270,20 @@
+@@ -274,19 +274,20 @@
  
     private static List<Predicate<Entity>> func_179659_d(Map<String, String> p_179659_0_) {
        List<Predicate<Entity>> list = Lists.newArrayList();
@@ -32,7 +32,7 @@
                    String s1 = team == null ? "" : team.func_96661_b();
 -                  return s1.equals(s) != flag;
 +                  return s1.equals(s2) != flag;
-@@ -340,16 +341,17 @@
+@@ -344,16 +345,17 @@
  
     private static List<Predicate<Entity>> func_179647_f(Map<String, String> p_179647_0_) {
        List<Predicate<Entity>> list = Lists.newArrayList();
@@ -52,11 +52,11 @@
              }
           });
        }
-@@ -511,7 +513,7 @@
+@@ -530,7 +532,7 @@
  
        Entity entity = p_179658_2_.func_174793_f();
        if (entity != null && p_179658_3_.isAssignableFrom(entity.getClass()) && i == 1 && p_179658_0_.contains(entity) && !"r".equals(p_179658_4_)) {
--         p_179658_0_ = Lists.newArrayList((T[])(entity));
+-         p_179658_0_ = Lists.newArrayList((T[])(new Entity[]{entity}));
 +         p_179658_0_ = Lists.newArrayList((T)(entity));
        }
  

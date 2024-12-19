@@ -18,5 +18,6 @@
 -         return renderplayer != null ? renderplayer : this.field_178637_m;
 +         return (Render<T>)(renderplayer != null ? renderplayer : this.field_178637_m);
        } else {
-          return this.func_78715_a(p_78713_1_.getClass());
+-         return this.func_78715_a((Class<? extends Entity>)p_78713_1_.getClass());
++         return this.func_78715_a(p_78713_1_.getClass());
        }
