@@ -1,6 +1,6 @@
 --- a/net/minecraft/block/state/BlockStateContainer.java
 +++ b/net/minecraft/block/state/BlockStateContainer.java
-@@ -75,7 +75,7 @@
+@@ -78,7 +78,7 @@
           blockstatecontainer$stateimplementation1.func_177235_a(map2);
        }
  
@@ -9,11 +9,11 @@
     }
  
     public static <T extends Comparable<T>> String func_185919_a(Block p_185919_0_, IProperty<T> p_185919_1_) {
-@@ -102,7 +102,7 @@
+@@ -105,7 +105,7 @@
        List<Iterable<Comparable<?>>> list = Lists.newArrayList();
  
-       for(IProperty<?> iproperty : this.field_177624_d.values()) {
--         list.add(iproperty.func_177700_c());
+       for (IProperty<?> iproperty : this.field_177624_d.values()) {
+-         list.add((Iterable<Comparable<?>>)iproperty.func_177700_c());
 +         list.add(((IProperty)iproperty).func_177700_c());
        }
  
