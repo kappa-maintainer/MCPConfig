@@ -4,7 +4,7 @@
     }
  
     protected NonNullList() {
--      this(new ArrayList<>(), (E)null);
+-      this(new ArrayList<>(), null);
 +      this(new ArrayList(), null);
     }
  
