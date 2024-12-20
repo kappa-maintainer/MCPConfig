@@ -1,7 +1,7 @@
 --- a/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
 +++ b/net/minecraft/entity/ai/EntityAINearestAttackableTarget.java
 @@ -99,9 +99,9 @@
-       
+ 
                       return 1.0;
                    }
                 },

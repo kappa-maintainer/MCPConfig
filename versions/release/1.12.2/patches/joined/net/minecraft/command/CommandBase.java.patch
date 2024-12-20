@@ -66,3 +66,21 @@
     }
  
     public static Predicate<IBlockState> func_190791_b(final Block p_190791_0_, String p_190791_1_) throws InvalidBlockStateException {
+@@ -479,7 +479,7 @@
+          return p_190795_0_.func_176223_P().func_177228_b();
+       } else {
+          BlockStateContainer blockstatecontainer = p_190795_0_.func_176194_O();
+-         Iterator iterator = field_190796_b.split(p_190795_1_).iterator();
++         Iterator<String> iterator = field_190796_b.split(p_190795_1_).iterator();
+ 
+          while (true) {
+             if (!iterator.hasNext()) {
+@@ -497,7 +497,7 @@
+                break;
+             }
+ 
+-            Comparable<?> comparable = func_190792_a((IProperty<Comparable<?>>)iproperty, iterator1.next());
++            Comparable<?> comparable = func_190792_a((IProperty<?>)iproperty, iterator1.next());
+             if (comparable == null) {
+                break;
+             }

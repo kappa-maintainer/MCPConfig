@@ -1243,7 +1243,7 @@ subprojects {
             timed(MavenPublication) {
                 artifactId project.archivesBaseName
                 version project.version + '-' + rootProject.TIMESTAMP
-                artifact makeZip
+                artifact makeZipTimed
                 pom {
                     name = 'MCPConfig'
                     description = 'Configuration files used for deobfuscating and modding Minecraft.'

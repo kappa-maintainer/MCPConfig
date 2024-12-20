@@ -1,6 +1,24 @@
 --- a/net/minecraft/item/ItemSlab.java
 +++ b/net/minecraft/item/ItemSlab.java
-@@ -88,6 +88,6 @@
+@@ -55,7 +55,7 @@
+          IBlockState iblockstate = p_180614_2_.func_180495_p(p_180614_3_);
+          if (iblockstate.func_177230_c() == this.field_150949_c) {
+             IProperty<?> iproperty = this.field_150949_c.func_176551_l();
+-            Comparable<?> comparable1 = iblockstate.func_177229_b((IProperty<Comparable<?>>)iproperty);
++            Comparable<?> comparable1 = iblockstate.func_177229_b((IProperty<?>)iproperty);
+             BlockSlab.EnumBlockHalf blockslab$enumblockhalf = iblockstate.func_177229_b(BlockSlab.field_176554_a);
+             if ((
+                   p_180614_5_ == EnumFacing.UP && blockslab$enumblockhalf == BlockSlab.EnumBlockHalf.BOTTOM
+@@ -97,7 +97,7 @@
+    private boolean func_180615_a(EntityPlayer p_180615_1_, ItemStack p_180615_2_, World p_180615_3_, BlockPos p_180615_4_, Object p_180615_5_) {
+       IBlockState iblockstate = p_180615_3_.func_180495_p(p_180615_4_);
+       if (iblockstate.func_177230_c() == this.field_150949_c) {
+-         Comparable<?> comparable = iblockstate.func_177229_b((IProperty<Comparable<?>>)this.field_150949_c.func_176551_l());
++         Comparable<?> comparable = iblockstate.func_177229_b((IProperty<?>)this.field_150949_c.func_176551_l());
+          if (comparable == p_180615_5_) {
+             IBlockState iblockstate1 = this.func_185055_a(this.field_150949_c.func_176551_l(), comparable);
+             AxisAlignedBB axisalignedbb = iblockstate1.func_185890_d(p_180615_3_, p_180615_4_);
+@@ -124,6 +124,6 @@
     }
  
     protected <T extends Comparable<T>> IBlockState func_185055_a(IProperty<T> p_185055_1_, Comparable<?> p_185055_2_) {
