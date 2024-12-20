@@ -2,6 +2,7 @@
     "java_target": 21,
     "mcinjector": {
         "version": "de.oceanlabs.mcp:mcinjector:3.8.4:fatjar",
+        "java_version": 21,
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"],
         "repo": "https://maven.outlands.top/releases/"
     },
