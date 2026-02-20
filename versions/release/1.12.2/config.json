@@ -2,13 +2,13 @@
     "java_target": 21,
     "mcinjector": {
         "version": "de.oceanlabs.mcp:mcinjector:3.8.4:fatjar",
-        "java_version": 21,
+        "java_version": 25,
         "args": ["--in", "{input}", "--out", "{output}", "--log", "{log}", "--lvt=LVT", "--exc", "{exceptions}", "--acc", "{access}", "--ctr", "{constructors}"],
         "repo": "https://maven.outlands.top/releases/"
     },
     "fernflower": {
-        "version": "org.vineflower:vineflower:1.10.1",
-        "java_version": 21,
+        "version": "org.vineflower:vineflower:1.11.2",
+        "java_version": 25,
         "args": ["-din=1", "-rbr=1", "-dgs=1", "-asc=1", "-rsy=1", "-iec=1", "-jvn=1", "-nls=1", "-log=TRACE", "-cfg", "{libraries}", "{input}", "{output}"],
         "jvmargs": ["-Xmx4G"],
         "repo": "https://repo1.maven.org/maven2/"

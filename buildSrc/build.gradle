@@ -5,9 +5,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.google.guava:guava:25.1-jre'
-    implementation 'org.ow2.asm:asm:8.0.1'
-    implementation 'org.ow2.asm:asm-tree:8.0.1'
+    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.google.guava:guava:33.5.0-jre'
+    implementation 'org.ow2.asm:asm:9.9.1'
+    implementation 'org.ow2.asm:asm-tree:9.9.1'
     implementation 'net.minecraftforge:srgutils:0.2.+'
 }

@@ -2,7 +2,7 @@ package net.minecraftforge.mcpconfig.tasks
 
 import org.gradle.api.tasks.*
 
-public class FernflowerTask extends JarExec {
+public abstract class FernflowerTask extends JarExec {
     @InputFile File libraries
     @InputFile File input
     @OutputFile File log

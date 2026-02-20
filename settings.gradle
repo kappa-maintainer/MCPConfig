@@ -12,9 +12,9 @@ def addDirectory(path) {
 
 def type = hasProperty('type') ? getProperty('type').toLowerCase() : 'release'
 
-if ('release'.equals(type)) {
+if ('release' == type) {
     addDirectory(new File('./versions/release/'))
-} else if ('snapshot'.equals(type)) {
+} else if ('snapshot' == type) {
     if (hasProperty('ver')) {
         addDirectory(new File('./versions/snapshot/' + getProperty('ver')))
     } else {
@@ -22,7 +22,7 @@ if ('release'.equals(type)) {
             addDirectory(it)
         }
     }
-} else if ('pre'.equals(type)) {
+} else if ('pre' == type) {
     if (hasProperty('ver')) {
         addDirectory(new File('./versions/pre/' + getProperty('ver')))
     } else {

@@ -13,40 +13,48 @@ buildscript {
     }
 }
 
+
+import de.siegmar.fastcsv.reader.CsvReader
+import de.siegmar.fastcsv.writer.CsvWriter
 import de.undercouch.gradle.tasks.download.Download
 import groovy.io.FileType
-import groovy.json.JsonSlurper
 import groovy.json.JsonBuilder
-import java.util.zip.ZipFile
-import java.util.zip.ZipEntry
-import java.util.zip.ZipOutputStream
-import java.security.MessageDigest
+import groovy.json.JsonSlurper
 import net.minecraftforge.lex.ExtractInheritance
 import net.minecraftforge.mappingverifier.MappingVerifier
 import net.minecraftforge.mcpconfig.tasks.*
 import net.minecraftforge.srgutils.IMappingFile
 import net.minecraftforge.srgutils.MinecraftVersion
-import uk.jamierocks.propatcher.task.*
-import de.siegmar.fastcsv.reader.CsvContainer
-import de.siegmar.fastcsv.reader.CsvReader
-import de.siegmar.fastcsv.writer.CsvWriter
-import de.siegmar.fastcsv.reader.CsvRow
-import java.util.stream.Collectors
+import org.apache.groovy.json.internal.LazyMap
+import uk.jamierocks.propatcher.task.ApplyPatchesTask
+import uk.jamierocks.propatcher.task.MakePatchesTask
+import uk.jamierocks.propatcher.task.ResetSourcesTask
+
 import java.nio.file.Files
+import java.security.MessageDigest
+import java.util.stream.Collectors
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
+import java.util.zip.ZipOutputStream 
 
 plugins {
-    id 'de.undercouch.download' version '4.0.4'
+    id 'de.undercouch.download' version '5.7.0'
     id 'uk.jamierocks.propatcher' version '2.0.1' apply false
     id 'net.rdrei.android.buildtimetracker' version '0.11.0'
 }
 apply plugin: 'maven-publish'
 apply plugin: 'java'
-archivesBaseName = 'mcp_config'
 group = 'de.oceanlabs.mcp'
+
+base {
+    archivesName = 'mcp_config'
+}
+
+
 
 ext {
     META_CACHE_FILE = 'meta_cache.json'
-    META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text)
+    META_CACHE = !file(META_CACHE_FILE).exists() ? [:] : new JsonSlurper().parseText(file(META_CACHE_FILE).text) as LazyMap
     VERSIONS = subprojects.collect{it.name}.sort{a,b -> compareVersion(a, b)} as List
     NULL_OUPUT = new OutputStream() { public void write(int b){} }
     TIMESTAMP = (new Date()).format('yyyyMMdd.HHmmss')
@@ -70,14 +78,15 @@ tasks.register('downloadVersionManifest', Download) {
             if (entry != null)
                 META_CACHE.get(sub.name, [:])['json'] = entry.url
         }
-        META_CACHE = META_CACHE.sort{a,b -> compareVersion(a.key, b.key)} //I like it pretty so lets sort it.
+        META_CACHE = META_CACHE.sort{a,b -> compareVersion(a.key, b.key)} as LazyMap //I like it pretty so lets sort it.
         file(META_CACHE_FILE).write(new JsonBuilder(META_CACHE).toPrettyString())
 
         downloadVersionManifest.dest.write(new JsonBuilder(json).toPrettyString()) //Pretty it up
     }
 }
-def compareVersion(a, b) {
-    return MinecraftVersion.from(a).compareTo(MinecraftVersion.from(b))
+
+static def compareVersion(String a, String b) {
+    return MinecraftVersion.from(a) <=> MinecraftVersion.from(b)
 }
 File.metaClass.getSha1 = { !delegate.exists() ? null : MessageDigest.getInstance('SHA-1').digest(delegate.bytes).encodeHex().toString() }
 
@@ -106,9 +115,12 @@ buildtimetracker {
 subprojects {
     apply plugin: 'de.undercouch.download'
     apply plugin: 'maven-publish'
-    archivesBaseName = rootProject.archivesBaseName
     group = rootProject.group
     version = name
+    
+    base {
+        archivesName = 'mcp_config'
+    }
 
     ext {
         FORGE_MAVEN = 'https://files.minecraftforge.net/maven/'
@@ -197,7 +209,7 @@ subprojects {
             def url = entry != null ? entry.url : rootProject.META_CACHE.get(project.version, ['json':null]).json
             if (url == null)
                 url = 'https://s3.amazonaws.com/Minecraft.Download/versions/' + project.version + '/' + project.version + '.json'
-            download {
+            download.run {
                 src url
                 dest downloadJson.dest
                 overwrite false
@@ -212,7 +224,7 @@ subprojects {
         dest file(PATH_CACHED_VERSION + 'client.jar')
         doLast {
             def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            download {
+            download.run {
                 src json.downloads.client.url
                 dest downloadClient.dest
                 overwrite false
@@ -225,7 +237,7 @@ subprojects {
         dest file(PATH_CACHED_VERSION + 'server.jar')
         doLast {
             def json = new JsonSlurper().parseText(inputs.files.singleFile.text)
-            download {
+            download.run {
                 src json.downloads.server.url
                 dest downloadServer.dest
                 overwrite false
@@ -242,7 +254,7 @@ subprojects {
                 artifacts.each{ art ->
                     def target = file(PATH_CACHED_LIBRARIES + art.path)
                     if (!target.exists()) {
-                        download {
+                        download.run {
                             src art.url
                             dest target
                         }
@@ -255,7 +267,7 @@ subprojects {
                         def path = mavenPath(art)
                         def target = file(PATH_CACHED_LIBRARIES + path)
                         if (!target.exists()) {
-                            download {
+                            download.run {
                                 src FORGE_MAVEN + path //TODO: Config this somehow?
                                 dest target
                             }
@@ -296,7 +308,7 @@ subprojects {
             def dl = new JsonSlurper().parse(downloadJson.dest).assetIndex
             def index = file(PATH_ASSETS + '/indexes/' + dl.id + '.json')
             if (index.sha1 != dl.sha1) {
-                download {
+                download.run {
                     src dl.url
                     dest index
                 }
@@ -305,9 +317,10 @@ subprojects {
                 def key = asset.value.hash.take(2) + '/' + asset.value.hash
                 def target = file(PATH_ASSETS + '/objects/' + key)
                 if (!target.exists()) {
-                    download {
+                    download.run {
                         src 'https://resources.download.minecraft.net/' + key
                         dest target
+                        retries 5
                     }
                 }
             }
@@ -332,7 +345,7 @@ subprojects {
             if (dl.find { a -> a.key.toString().endsWith("_mappings")} != null) {
                 hasMojmap = true
                 for (def map : ["client", "server"]) {
-                    download {
+                    download.run {
                         src map.equals("client") ? dl.client_mappings.url : dl.server_mappings.url
                         dest file(PATH_MOJMAP + map + ".txt")
                     }
@@ -475,8 +488,8 @@ subprojects {
         dependsOn downloadMergeTool, filterClient, filterServer
         jar downloadMergeTool.dest
         jvmArgs MERGETOOL.jvmargs
-        client filterClient.archivePath
-        server filterServer.archivePath
+        client filterClient.archiveFile.get().getAsFile()
+        server filterServer.archiveFile.get().getAsFile()
         version project.version
         dest file(PATH_CACHED_VERSION + 'joined.jar')
         args MERGETOOL.args
@@ -486,7 +499,7 @@ subprojects {
         dependsOn downloadRenameTool, downloadLibraries, filterClient
         jar downloadRenameTool.dest
         jvmArgs RENAMETOOL.jvmargs
-        input filterClient.archivePath
+        input filterClient.archiveFile.get().getAsFile()
         mappings file(PATH_VERSION + 'joined.tsrg')
         args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + 'client.mapped.jar')
@@ -495,7 +508,7 @@ subprojects {
         dependsOn downloadRenameTool, downloadLibraries, filterServer
         jar downloadRenameTool.dest
         jvmArgs RENAMETOOL.jvmargs
-        input filterServer.archivePath
+        input filterServer.archiveFile.get().getAsFile()
         mappings file(PATH_VERSION + 'joined.tsrg')
         args RENAMETOOL.args
         dest file(PATH_CACHED_VERSION + 'server.mapped.jar')
@@ -605,14 +618,14 @@ subprojects {
     }
     tasks.register('fernflowerLibrariesServer', SingleFileOutput) {
         dependsOn filterServerExtra, downloadLibraries
-        inputs.file filterServerExtra.archivePath
+        inputs.file filterServerExtra.archiveFile.get().getAsFile()
         dest file(PATH_CACHED_VERSION + 'server.fernflower.libs.txt')
         doLast {
             dest.withWriter('UTF-8'){ writer ->
                 if (CONFIG?.libraries?.server != null) {
                     CONFIG.libraries.server.collect{ mavenPath(it) }.each { lib -> writer.write('-e=' + file(PATH_CACHED_LIBRARIES + lib).absolutePath + '\n') }
                 }
-                writer.write('-e=' + filterServerExtra.archivePath.absolutePath + '\n')
+                writer.write('-e=' + filterServerExtra.archiveFile.get().getAsFile().absolutePath + '\n')
             }
         }
     }
@@ -660,7 +673,7 @@ subprojects {
 
     tasks.register('extractNatives', ExtractNatives) {
         dependsOn downloadJson, downloadLibraries, downloadFernflower, downloadMCInjector, downloadMergeTool, downloadRenameTool
-        meta downloadJson.dest
+        meta downloadJson.dest as File
         cache file(PATH_CACHED_LIBRARIES)
         dest file(PATH_NATIVES)
     }
@@ -711,7 +724,7 @@ subprojects {
                     tasks.register("fernflower${child.name}${jvmNameExt}", FernflowerTask) {
                         dependsOn downloadFernflower, "mcinject${child.name}", "fernflowerLibraries${child.name}"
                         if (jvmHome != null) {
-                            executable = new File(jvmHome, "bin/java")
+                            executable = new File(jvmHome as File, "bin/java")
                         }
                         jar downloadFernflower.dest
                         jvmArgs FERNFLOWER.jvmargs
@@ -845,7 +858,7 @@ subprojects {
                                 meta downloadJson.dest
                             if (CONFIG?.libraries?.get(child.name.toLowerCase()) != null)
                                 CONFIG.libraries.get(child.name.toLowerCase()).each { library "'${it}'" }
-                            library "files('" + tasks.getByName("filter${child.extra}Extra").archivePath.absolutePath.replace('\\', '/') + "')"
+                            library "files('" + tasks.getByName("filter${child.extra}Extra").archiveFile.get().asFile.absolutePath.replace('\\', '/') + "')"
                             replace('{inject}', PATH_INJECT == null ? 'null' : "'${PATH_INJECT.absolutePath.replace('\\', '/')}'")
                             replace('{assets}', "'${file(PATH_ASSETS).absolutePath.replace('\\', '/')}'")
                             replace('{natives}', "'${file(PATH_NATIVES).absolutePath.replace('\\', '/')}'")
@@ -1060,7 +1073,7 @@ subprojects {
             json {
                 spec 4
                 version project.version
-                java_target 21
+                java_target 25
                 encoding "UTF-8"
                 data {
                     access 'config/access.txt'
@@ -1092,7 +1105,7 @@ subprojects {
         dependsOn makeSRG, dumpOverrides, dumpStatic, fixAccessLevels, makeExceptions
 
         version = project.version
-        archiveBaseName = project.archivesBaseName + "-" + version
+        archiveFileName = 'mcp_config' + "-" + version
         destinationDirectory = file(PATH_DISTRO)
 
         from generateConfiguration
@@ -1119,10 +1132,10 @@ subprojects {
 
     tasks.register('makeZipTimed', Zip) {
         dependsOn makeZip, extractInheritance
-        archiveBaseName = project.archivesBaseName
+        archiveFileName = 'mcp_config'
         this.version = project.version + '-' + rootProject.TIMESTAMP
         destinationDirectory = file(PATH_DISTRO)
-        from zipTree(makeZip.archivePath)
+        from zipTree(makeZip.archiveFile.get().getAsFile())
     }
 
     tasks.register('verify') {
@@ -1274,7 +1287,7 @@ subprojects {
         }
         publications {
             maven(MavenPublication) {
-                artifactId project.archivesBaseName
+                artifactId 'mcp_config'
                 version project.version + '-' + rootProject.TIMESTAMP
                 artifact makeZipTimed
                 pom {
@@ -1479,8 +1492,9 @@ def getVersionIndex(prop, default_) {
     return VERSIONS.indexOf(project.getProperty(prop))
 }
 
-def mavenPath(dep) {
+static def mavenPath(dep) {
     if (dep == null) return null
+    println(dep)
     def ext = 'jar'
     def idx = dep.indexOf('@')
     if (idx != -1) {

@@ -2,7 +2,7 @@ package net.minecraftforge.mcpconfig.tasks
 
 import org.gradle.api.tasks.*
 
-public class MCInjectTask extends JarExec {
+public abstract class MCInjectTask extends JarExec {
     @InputFile File access
     @InputFile File constructors
     @InputFile File exceptions

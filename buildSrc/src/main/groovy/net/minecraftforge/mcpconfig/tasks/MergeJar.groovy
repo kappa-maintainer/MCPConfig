@@ -3,7 +3,7 @@ package net.minecraftforge.mcpconfig.tasks;
 import org.gradle.api.*
 import org.gradle.api.tasks.*
 
-class MergeJar extends JarExec {
+abstract class MergeJar extends JarExec {
     @InputFile File client
     @InputFile File server
     @Input String version
